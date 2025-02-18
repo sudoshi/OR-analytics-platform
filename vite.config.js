@@ -16,4 +16,11 @@ export default defineConfig({
         },
     },
     assetsInclude: ['**/*.svg'],
+    server: {
+        cors: {
+            origin: 'https://demo.zephyrus.care',
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+            credentials: true
+        }
+    }
 });
