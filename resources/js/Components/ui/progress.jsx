@@ -13,4 +13,4 @@ const Progress = ({ value }) => {
   );
 };
 
-export default Progress;
+export { Progress };

@@ -21,5 +21,11 @@ export const SelectValue = ({ children, ...props }) => (
 export const SelectContent = ({ children, ...props }) => (
   <div {...props}>
     {children}
-  </div>
+</div>
+);
+
+export const SelectItem = ({ children, ...props }) => (
+<option {...props}>
+    {children}
+</option>
 );

@@ -70,19 +70,14 @@ php artisan migrate --force
 
 
 ##
-# 9. Ensure Test or Admin Users Exist (Seeding)
-#    - If your login process needs certain users or roles, you can run a seeder.
-#      Make sure your seeder checks for existing users and only creates if they don't exist.
+# 9. Database Seeding
+#    - Seeding is not needed in production as all data is managed separately
+#    - This section is intentionally skipped
 ##
-#log "Seeding test or required production users..."
-#php artisan db:seed --class=TestUsersSeeder --force || log "Seeding failed!"
-
-# Alternatively:
-# php artisan db:seed --force
-# (if your DatabaseSeeder calls the test user seeder automatically)
-
-# Or if your environment might have multiple seeders:
-php artisan db:seed --class=ProductionSeeder --force
+# Examples of seeding commands (not used):
+#   php artisan db:seed --class=TestUsersSeeder --force
+#   php artisan db:seed --force
+#   php artisan db:seed --class=ProductionSeeder --force
 
 
 ##

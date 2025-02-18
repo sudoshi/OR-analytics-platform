@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,13 +31,12 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
         // Store the selected workflow in the session
         $request->session()->put('workflow', $request->workflow);
 
-        // Store the username in the session
+        // Store the username in the session  
         $request->session()->put('username', $request->username);
 
         // Redirect to the appropriate dashboard based on workflow
@@ -47,13 +47,13 @@ class AuthenticatedSessionController extends Controller
             default => 'dashboard'
         };
 
-        return Inertia::location($dashboardRoute);
+        return redirect()->route($dashboardRoute);
     }
 
     /**
      * Destroy an authenticated session.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request): HttpResponse|RedirectResponse
     {
             Auth::guard('web')->logout();
 
